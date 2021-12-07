@@ -16,7 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "doc",
     component: () => import("../views/doc.vue"),
     children: [
+      { path: "", component: () => import("../components/DocDemo.vue") },
       { path: "switch", component: () => import("../components/Switch.vue") },
+      { path: "button", component: () => import("../components/Button.vue") },
+      { path: "dialog", component: () => import("../components/Dialog.vue") },
+      { path: "tabs", component: () => import("../components/Tabs.vue") },
     ],
   },
 ];

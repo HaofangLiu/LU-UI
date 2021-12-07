@@ -45,7 +45,7 @@ export default defineComponent({
     display: inline-block;
     height: $h;
     line-height: $h;
-    border-radius: $h/2;
+    border-radius: 14px;
     background-color: white;
   }
 }
