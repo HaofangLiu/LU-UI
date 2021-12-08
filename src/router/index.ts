@@ -17,10 +17,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/doc.vue"),
     children: [
       { path: "", component: () => import("../components/DocDemo.vue") },
-      { path: "switch", component: () => import("../components/Switch.vue") },
-      { path: "button", component: () => import("../components/Button.vue") },
-      { path: "dialog", component: () => import("../components/Dialog.vue") },
-      { path: "tabs", component: () => import("../components/Tabs.vue") },
+      { path: "switch", component: () => import("../components/SwitchDemo.vue") },
+      { path: "button", component: () => import("../components/ButtonDemo.vue") },
+      { path: "dialog", component: () => import("../components/DialogDemo.vue") },
+      { path: "tabs", component: () => import("../components/TabDemo.vue") },
     ],
   },
 ];
