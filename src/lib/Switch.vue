@@ -1,5 +1,5 @@
 <template>
-  <div class="switch">
+  <div class="switch-lu">
     <span
       class="slider round"
       :class="{ checked: value }"
@@ -26,8 +26,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.switch {
+<style lang="scss">
+.switch-lu {
   display: inline-block;
   width: 60px;
   height: 34px;

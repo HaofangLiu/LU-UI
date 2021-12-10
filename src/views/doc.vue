@@ -55,6 +55,7 @@ export default defineComponent({
     bottom: 0;
     border-right: 1px solid #eaecef;
     overflow-y: auto;
+    z-index: 1;
   }
 
   main {
