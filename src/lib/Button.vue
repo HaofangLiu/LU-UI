@@ -6,7 +6,25 @@
       :class="[theme, size]"
       :disabled="disabled"
     >
-      <span class="loading" v-if="loading"></span>
+      <span class="loading" v-if="loading">
+        <svg
+          class="spinner"
+          width="14px"
+          height="14px"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="path"
+            fill="none"
+            stroke-width="6"
+            stroke-linecap="round"
+            cx="33"
+            cy="33"
+            r="30"
+          ></circle>
+        </svg>
+      </span>
       <slot></slot>
     </button>
   </div>
@@ -40,10 +58,13 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:math";
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
 $radius: 4px;
+$offset: 187;
+$duration: 1.4s;
 .wrapper-lu {
   display: inline-block;
   & + & {
@@ -123,16 +144,60 @@ $radius: 4px;
       cursor: not-allowed;
       color: grey;
     }
-
     .loading {
-      width: 14px;
-      height: 14px;
-      display: inline-block;
-      margin-right: 4px;
-      border-radius: 8px;
-      border-color: blue blue blue transparent;
-      border-style: solid;
-      border-width: 2px;
+        margin-right: 4px;
+      .spinner {
+        animation: rotator $duration linear infinite;
+      }
+
+      @keyframes rotator {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(270deg);
+        }
+      }
+
+      .path {
+        stroke-dasharray: $offset;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        animation: dash $duration ease-in-out infinite,
+          colors ($duration * 4) ease-in-out infinite;
+      }
+
+      @keyframes colors {
+        0% {
+          stroke: #4285f4;
+        }
+        25% {
+          stroke: #de3e35;
+        }
+        50% {
+          stroke: #f7c223;
+        }
+        75% {
+          stroke: #1b9a59;
+        }
+        100% {
+          stroke: #4285f4;
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: $offset;
+        }
+        50% {
+          stroke-dashoffset: math.div($offset, 4);
+          transform: rotate(135deg);
+        }
+        100% {
+          stroke-dashoffset: $offset;
+          transform: rotate(450deg);
+        }
+      }
     }
   }
 }

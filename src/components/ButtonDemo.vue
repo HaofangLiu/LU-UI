@@ -25,16 +25,24 @@
   <div>
     <p>加载中</p>
     <Button>default</Button>
-    <Button loading>default</Button>
-    <Button theme="text" disabled>default</Button>
+    <Button loading>default loading</Button>
+    <Button :loading="loadingBool" @click="toogleLoading">click me</Button>
+    <Button theme="text" loading></Button>
   </div>
 </template>
 
 <script lang="ts">
+import { ref, watch, computed, onMounted } from "vue";
 import Button from "../lib/Button.vue";
 export default {
   components: { Button },
   setup() {
+    const loadingBool = ref(false);
+
+    const toogleLoading = () => {
+      loadingBool.value = !loadingBool.value;
+    };
+
     const onClick = () => {
       console.log("hi");
     };
@@ -46,6 +54,8 @@ export default {
     return {
       onClick,
       onFocus,
+      loadingBool,
+      toogleLoading,
     };
   },
 };
