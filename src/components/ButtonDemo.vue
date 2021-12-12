@@ -27,7 +27,7 @@
     <Button>default</Button>
     <Button loading>default loading</Button>
     <Button :loading="loadingBool" @click="toogleLoading">click me</Button>
-    <Button theme="text" loading></Button>
+    <Button theme="text" loading>text</Button>
   </div>
 </template>
 
