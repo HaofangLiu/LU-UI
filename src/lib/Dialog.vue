@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref,defineComponent } from "vue";
 import ButtonVue from "./Button.vue";
 
-export default {
+export default defineComponent({
   components: { ButtonVue },
   props: {
     visible: {
@@ -63,7 +63,7 @@ export default {
     };
     return { close, clickOnOverlay, confirm, cancel };
   },
-};
+});
 </script>
 
 <style lang="scss">

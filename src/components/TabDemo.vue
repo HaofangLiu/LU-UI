@@ -10,10 +10,11 @@
 <script lang="ts">
 import Tabs from "../lib/Tabs.vue";
 import Tab from "../lib/Tab.vue";
+import {defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: { Tabs, Tab },
-};
+});
 </script>
 
 <style></style>

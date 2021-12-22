@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref,defineComponent } from "vue";
 import Switch from "../lib/Switch.vue";
-export default {
+export default defineComponent ({
   components: { Switch },
   setup() {
     const checkedBool = ref(true);
@@ -14,7 +14,7 @@ export default {
       checkedBool,
     };
   },
-};
+});
 </script>
 
 <style></style>

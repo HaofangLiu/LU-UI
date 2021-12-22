@@ -1,17 +1,15 @@
 <template>
   <div class="tab-lu">
-      <p>cur</p>
+    <p>cur</p>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 
-export default {
-  setup(){
-
-  }
-};
+export default defineComponent({
+  setup() {},
+});
 </script>
 
 <style lang="scss"></style>

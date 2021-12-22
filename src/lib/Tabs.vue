@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 import Tab from "./Tab.vue";
-export default {
+export default defineComponent({
   setup(props, context) {
     const defalut = context.slots.default();
     defalut.forEach((element) => {
@@ -19,7 +19,7 @@ export default {
       defalut,
     };
   },
-};
+});
 </script>
 
 <style lang="scss"></style>

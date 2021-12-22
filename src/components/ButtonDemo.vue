@@ -32,9 +32,9 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, computed, onMounted } from "vue";
+import { ref, defineComponent, watch, computed, onMounted } from "vue";
 import Button from "../lib/Button.vue";
-export default {
+export default defineComponent({
   components: { Button },
   setup() {
     const loadingBool = ref(false);
@@ -58,7 +58,7 @@ export default {
       toogleLoading,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

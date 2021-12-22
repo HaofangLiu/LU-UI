@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, computed, onMounted } from "vue";
+import { ref, watch, computed, onMounted,defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   inheritAttrs: false,
   props: {
     theme: {
@@ -54,7 +54,7 @@ export default {
     },
   },
   setup(props) {},
-};
+});
 </script>
 
 <style lang="scss">

@@ -24,12 +24,12 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, computed, onMounted } from "vue";
+import { ref,defineComponent, watch, computed, onMounted } from "vue";
 import DialogVue from "../lib/Dialog.vue";
 import Button from "../lib/Button.vue";
 import { openDialog } from "../lib/dialogControl";
 
-export default {
+export default defineComponent({
   components: { DialogVue, Button },
   setup() {
     const visible = ref(false);
@@ -64,7 +64,7 @@ export default {
       showDialog,
     };
   },
-};
+});
 </script>
 
 <style></style>
