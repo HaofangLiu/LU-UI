@@ -1,6 +1,6 @@
 <template>
   <div class="tab-lu">
-    <p>cur</p>
+    <slot></slot>
   </div>
 </template>
 
