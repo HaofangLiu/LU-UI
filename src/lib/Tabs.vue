@@ -1,33 +1,83 @@
 <template>
   <div class="tabs-lu">
     <div class="tabs-nav">
-      <div class="tabs-nav-items" v-for="(t, index) in titles" key="index">
-        {{ t }}
+      <div
+        class="tabs-nav-items"
+        :class="{ selected: tab.props.title === selected }"
+        v-for="(tab, index) in defaultElement"
+        :key="index"
+        @click="changTab(tab)"
+        :ref="
+          (el) => {
+            if (el) tabItemRef[index] = el;
+          }
+        "
+      >
+        {{ tab.props.title }}
       </div>
+      <div class="tabs-indeicator" ref="indicatorRef"></div>
     </div>
+
     <div class="tabs-content">
-      <component v-for="(c, index) in defalut" key="index" :is="c" />
+      <component :is="selectedTab" :key="selectedTab.props.title" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, computed, onBeforeUpdate, onMounted } from "vue";
 import Tab from "./Tab.vue";
 export default defineComponent({
+  props: {
+    selected: {
+      type: String,
+    },
+  },
+  emits: ["update:selected"],
   setup(props, context) {
-    const defalut = context.slots.default();
-    defalut.forEach((element) => {
+    // console.log(context);
+    // console.log({ ...context });
+
+    // 计算下滑块长度
+    const tabItemRef = ref<HTMLDivElement[]>([]);
+    const indicatorRef = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      // console.log({...tabItem.value})
+      const divs = tabItemRef.value;
+      const res = divs.find((item) => item.classList.contains("selected"));
+      const { width } = res.getBoundingClientRect();
+      indicatorRef.value.style.width = width + "px";
+    });
+
+    // 保在每次更新之前重置ref
+    onBeforeUpdate(() => {
+      tabItemRef.value = [];
+    });
+
+    // 获取到插槽的虚拟节点
+    const defaultElement = context.slots.default();
+    defaultElement.forEach((element) => {
       if (element.type !== Tab) {
         throw Error("only accept Tab");
       }
     });
-    const titles = defalut.map((ele) => {
-      return ele.props.title;
-    });
+
+    // 显示对应的插槽内容
+    const selectedTab = computed(() =>
+      defaultElement.find((item) => item.props.title === props.selected)
+    );
+
+    // 点击改变Tab事件
+    const changTab = (tab) => {
+      context.emit("update:selected", tab.props.title);
+    };
+
     return {
-      defalut,
-      titles,
+      defaultElement,
+      selectedTab,
+      changTab,
+      tabItemRef,
+      indicatorRef,
     };
   },
 });
@@ -41,6 +91,7 @@ $border-color: #d9d9d9;
   display: flex;
   color: $color;
   border-bottom: 1px solid $border-color;
+  position: relative;
   &-items {
     padding: 8px 0;
     margin: 0 16px;
@@ -55,5 +106,13 @@ $border-color: #d9d9d9;
 }
 .tabs-content {
   padding: 8px 0;
+}
+.tabs-indeicator {
+  position: absolute;
+  height: 3px;
+  background: $blue;
+  width: 100px;
+  left: 0;
+  bottom: 0;
 }
 </style>

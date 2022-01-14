@@ -2,7 +2,7 @@
   <p>Dialog</p>
   <DialogVue
     v-model:visible="visible"
-    :closeOnClickOverlay="true"
+    :closeOnClickOverlay="false"
     :onConfirm="onConfirm"
     :onCancel="onCancel"
   >
@@ -24,6 +24,7 @@
 </template>
 
 <script lang="ts">
+
 import { ref,defineComponent, watch, computed, onMounted } from "vue";
 import DialogVue from "../lib/Dialog.vue";
 import Button from "../lib/Button.vue";
@@ -47,7 +48,7 @@ export default defineComponent({
 
     const showDialog = () => {
       openDialog({
-        title: "tesdt",
+        title: "test",
         content: "你好",
         cancel: "cancel",
         confirm: "confirm",
