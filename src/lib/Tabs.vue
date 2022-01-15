@@ -1,6 +1,6 @@
 <template>
   <div class="tabs-lu">
-    <div class="tabs-nav">
+    <div class="tabs-nav" ref="navRef">
       <div
         class="tabs-nav-items"
         :class="{ selected: tab.props.title === selected }"
@@ -9,7 +9,7 @@
         @click="changTab(tab)"
         :ref="
           (el) => {
-            if (el) tabItemRef[index] = el;
+            if (tab.props.title === selected) tabSelecctedItemRef = el;
           }
         "
       >
@@ -25,7 +25,16 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed, onBeforeUpdate, onMounted } from "vue";
+import {
+  ref,
+  defineComponent,
+  computed,
+  onBeforeUpdate,
+  watchEffect,
+  onMounted,
+  effect,
+  onUpdated,
+} from "vue";
 import Tab from "./Tab.vue";
 export default defineComponent({
   props: {
@@ -35,23 +44,21 @@ export default defineComponent({
   },
   emits: ["update:selected"],
   setup(props, context) {
-    // console.log(context);
-    // console.log({ ...context });
-
     // 计算下滑块长度
-    const tabItemRef = ref<HTMLDivElement[]>([]);
+    const tabSelecctedItemRef = ref(null);
     const indicatorRef = ref<HTMLDivElement>(null);
-    onMounted(() => {
-      // console.log({...tabItem.value})
-      const divs = tabItemRef.value;
-      const res = divs.find((item) => item.classList.contains("selected"));
-      const { width } = res.getBoundingClientRect();
-      indicatorRef.value.style.width = width + "px";
-    });
+    const navRef = ref<HTMLDivElement>(null);
 
-    // 保在每次更新之前重置ref
-    onBeforeUpdate(() => {
-      tabItemRef.value = [];
+    // 为了防止watchEffect在挂在前执行
+    onMounted(() => {
+      watchEffect(() => {
+        const { width, left: left2 } =
+          tabSelecctedItemRef.value.getBoundingClientRect();
+        indicatorRef.value.style.width = width + "px";
+        const { left: left1 } = navRef.value.getBoundingClientRect();
+        const left = left2 - left1;
+        indicatorRef.value.style.left = left + "px";
+      });
     });
 
     // 获取到插槽的虚拟节点
@@ -76,8 +83,9 @@ export default defineComponent({
       defaultElement,
       selectedTab,
       changTab,
-      tabItemRef,
+      tabSelecctedItemRef,
       indicatorRef,
+      navRef,
     };
   },
 });
@@ -112,7 +120,8 @@ $border-color: #d9d9d9;
   height: 3px;
   background: $blue;
   width: 100px;
-  left: 0;
+  left: 16px;
   bottom: 0;
+  transition: all 0.25s;
 }
 </style>
