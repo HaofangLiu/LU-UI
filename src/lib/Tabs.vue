@@ -29,11 +29,8 @@ import {
   ref,
   defineComponent,
   computed,
-  onBeforeUpdate,
   watchEffect,
   onMounted,
-  effect,
-  onUpdated,
 } from "vue";
 import Tab from "./Tab.vue";
 export default defineComponent({
