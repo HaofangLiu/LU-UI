@@ -13,11 +13,11 @@ export default {
   name: "App",
   setup() {
     const clientWidth = document.documentElement.clientWidth;
-    const menuDisplay = ref(clientWidth > 500);
+    const menuDisplay = ref(clientWidth > 719);
     provide("xx", menuDisplay);
 
     router.afterEach(() => {
-      if (clientWidth <= 500) {
+      if (clientWidth <= 719) {
         menuDisplay.value = false;
       }
     });

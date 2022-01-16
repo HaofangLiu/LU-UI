@@ -4,14 +4,9 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-size: 16px;
-  font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica,
-    "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB",
-    "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN",
-    "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
-    SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+  font-family: "Gloria Hallelujah", cursive;
 }
 
 ul,
@@ -23,8 +18,8 @@ a {
   text-decoration: none;
   color: inherit;
   &:hover {
-    border-bottom: 1px solid;
     cursor: pointer;
+    text-decoration: underline;
   }
 }
 
@@ -35,4 +30,12 @@ h4,
 h5,
 h6 {
   font-weight: normal;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <div class="icon" @click="toggleMenu">
+    <div class="nav-icon" @click="toggleMenu">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -12,11 +12,16 @@
         ></path>
       </svg>
     </div>
-
-    <img class="logo" src="../assets/compass.svg" />
-    <ul class="menu">
-      <li>menu</li>
-      <li>menu</li>
+    <router-link to="/" class="logo">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-compass"></use>
+      </svg>
+    </router-link>
+    <ul class="menu" :class="{ open: menuVisible }">
+      <li>
+        <router-link to="/doc"> Document </router-link>
+      </li>
+      <li><a href="https://wiredjs.com/">Weired UI</a></li>
     </ul>
   </div>
 </template>
@@ -27,12 +32,13 @@ import { defineComponent, inject, Ref } from "vue";
 export default defineComponent({
   setup() {
     const menuVisible = inject<Ref<boolean>>("xx");
-
     const toggleMenu = () => {
+      console.log(menuVisible.value);
       menuVisible.value = !menuVisible.value;
     };
     return {
       toggleMenu,
+      menuVisible,
     };
   },
 });
@@ -40,8 +46,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .topnav {
-  border-bottom: 1px solid #eaecef;
-  background-color: #fff;
   font-size: 16px;
   height: 3em;
   display: flex;
@@ -50,34 +54,51 @@ export default defineComponent({
   top: 0;
   left: 0;
   width: 100%;
-  > .logo {
-    max-width: 6em;
+  .logo > svg {
+    width: 2em;
+    height: 2em;
     margin-right: auto;
   }
-  > .menu {
+  .menu {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
-    > li {
+    margin-left: auto;
+    li {
       line-height: 31px;
       margin: 0 1em;
     }
   }
 
-  > .icon {
+  .nav-icon {
     display: none;
     width: 1em;
     cursor: pointer;
   }
 
   @media (max-width: 719px) {
-    > .menu {
-      display: none;
+    .menu {
+      display: block;
+      background: #f9f9f9;
+      visibility: hidden;
+      width: 110px;
+      position: absolute;
+      transition: all 0.25s ease;
+      left: 8px;
+      top: 48px;
+      z-index: 1;
+      opacity: 0;
+      border-radius: 5%;
+      &.open {
+        visibility: visible;
+        opacity: 1;
+      }
     }
-    > .logo {
+
+    .logo {
       margin: 0 auto;
     }
-    > .icon {
+    .nav-icon {
       display: flex;
     }
   }
