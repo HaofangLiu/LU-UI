@@ -16,10 +16,21 @@ const routes: Array<RouteRecordRaw> = [
     name: "doc",
     component: () => import("../views/doc.vue"),
     children: [
-      { path: "", component: () => import("../components/DocDemo.vue") },
-      { path: "switch", component: () => import("../components/SwitchDemo.vue") },
-      { path: "button", component: () => import("../components/ButtonDemo.vue") },
-      { path: "dialog", component: () => import("../components/DialogDemo.vue") },
+      { path: "", component: () => import("../components/DocDemo.vue") }, // intro
+      { path: "getStart", component: () => import("../views/getstart.vue") }, // getstart
+
+      {
+        path: "switch",
+        component: () => import("../components/SwitchDemo.vue"),
+      },
+      {
+        path: "button",
+        component: () => import("../components/ButtonDemo.vue"),
+      },
+      {
+        path: "dialog",
+        component: () => import("../components/DialogDemo.vue"),
+      },
       { path: "tabs", component: () => import("../components/TabDemo.vue") },
     ],
   },

@@ -1,6 +1,7 @@
 <template>
   <div class="top-nav">
     <TopnavVue></TopnavVue>
+
     <div class="banner">
       <h1>Lu-UI</h1>
       <h2>A UI toolkit inspired by weired UI</h2>
