@@ -43,7 +43,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.top-nav .topnav .nav-icon{
+.top-nav .topnav .nav-icon {
   display: none;
 }
 .topnav {
@@ -55,6 +55,8 @@ export default defineComponent({
   top: 0;
   left: 0;
   width: 100%;
+  background: #fff;
+  z-index: 10;
   .logo > svg {
     width: 2em;
     height: 2em;
@@ -65,10 +67,14 @@ export default defineComponent({
     & > .menu {
       display: flex;
       white-space: nowrap;
-      flex-wrap: nowrap;
-      li {
+      > li {
         line-height: 31px;
-        margin: 0 1em;
+        > a {
+          padding: 0 2em;
+          &:hover{
+            color: rgba(192, 177, 37, 0.911);
+          }
+        }
       }
     }
   }
@@ -86,15 +92,23 @@ export default defineComponent({
       > .menu {
         visibility: hidden;
         opacity: 0;
-        flex-wrap: wrap;
+        flex-direction: column;
         background: #f9f9f9;
-        width: 110px;
         position: absolute;
         transition: opacity 0.25s ease;
         top: 40px;
         right: 15px;
-        z-index: 999;
         border-radius: 5%;
+        > li {
+          > a {
+            display: block;
+            border-radius: 10%;
+            padding: 10px 15px;
+            &:hover {
+              background-color: blanchedalmond;
+            }
+          }
+        }
       }
       &:hover {
         & > .menu {

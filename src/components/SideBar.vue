@@ -42,10 +42,10 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped lang="scss">
 aside {
   font-size: 16px;
-  padding: 10px;
+  padding: 10px 0;
   background-color: #fff;
   width: 15em;
   position: fixed;
@@ -55,6 +55,22 @@ aside {
   border-right: 1px solid #eaecef;
   overflow-y: auto;
   z-index: 1;
+  h2{
+    padding: 0 10px;
+  }
+
+  ol {
+    li {
+      a {
+        display: block;
+        padding: 10px 20px;
+      }
+      .router-link-exact-active {
+        text-decoration: underline;
+        background-color: blanchedalmond;
+      }
+    }
+  }
 }
 @media (max-width: 719px) {
   aside {

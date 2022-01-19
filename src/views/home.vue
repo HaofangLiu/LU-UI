@@ -61,6 +61,9 @@ export default defineComponent({
     rgba(0, 212, 255, 1) 100%
   );
   clip-path: ellipse(80% 60% at 50% 40%);
+  >.topnav{
+    background: transparent;
+  }
 }
 .banner {
   padding: 80px 10px;
