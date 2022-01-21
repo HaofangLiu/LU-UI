@@ -47,13 +47,8 @@ export default defineComponent({
       console.log("hi");
     };
 
-    const onFocus = () => {
-      console.log("dfoai");
-    };
-
     return {
       onClick,
-      onFocus,
       loadingBool,
       toogleLoading,
     };
