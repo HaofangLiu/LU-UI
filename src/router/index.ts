@@ -1,10 +1,14 @@
+import { h } from "vue";
 import {
   createRouter,
   createWebHashHistory,
   createWebHistory,
   RouteRecordRaw,
 } from "vue-router";
+import MarkdownComponent from "../components/MarkdownComponent.vue";
 
+const retriveMarkdown = (filename: string) =>
+  h(MarkdownComponent, { path: `../md/${filename}`, key: filename });
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,8 +21,8 @@ const routes: Array<RouteRecordRaw> = [
     name: "doc",
     component: () => import("../views/doc.vue"),
     children: [
-      { path: "", component: () => import("../components/DocDemo.vue") }, // intro
-      { path: "getStart", component: () => import("../views/getstart.vue") }, // getstart
+      { path: "", component: retriveMarkdown("doc.md") }, // intro
+      { path: "getStart", component: retriveMarkdown("getStart.md") }, // getstart
 
       {
         path: "switch",

@@ -12,8 +12,9 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const start = shallowRef("");
-    import(/* @vite-ignore */props.path).then((val) => {
+    // give a default value is to avoid the warning
+    const start = shallowRef("null");
+    import(/* @vite-ignore */ props.path).then((val) => {
       start.value = val.default;
     });
 
