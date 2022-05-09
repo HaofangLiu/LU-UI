@@ -32,7 +32,6 @@ import { ref, defineComponent } from "vue";
 import Switch from "../lib/Switch.vue";
 import Button from "../lib/Button.vue";
 import SwitchDemo1Vue from "./SwitchDemo1.vue";
-console.log(SwitchDemo1Vue);
 export default defineComponent({
   components: { Switch, Button, SwitchDemo1Vue },
   setup() {
