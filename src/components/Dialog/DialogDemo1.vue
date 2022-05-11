@@ -1,5 +1,4 @@
 <template>
-  <p>Dialog</p>
   <DialogVue
     v-model:visible="visible"
     :closeOnClickOverlay="false"
@@ -25,10 +24,10 @@
 
 <script lang="ts">
 
-import { ref,defineComponent, watch, computed, onMounted } from "vue";
-import DialogVue from "../lib/Dialog.vue";
-import Button from "../lib/Button.vue";
-import { openDialog } from "../lib/dialogControl";
+import { ref,defineComponent } from "vue";
+import DialogVue from "../../lib/Dialog.vue";
+import Button from "../../lib/Button.vue";
+import { openDialog } from "../../lib/dialogControl";
 
 export default defineComponent({
   components: { DialogVue, Button },

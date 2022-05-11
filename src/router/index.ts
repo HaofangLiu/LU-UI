@@ -26,17 +26,17 @@ const routes: Array<RouteRecordRaw> = [
 
       {
         path: "switch",
-        component: () => import("../components/SwitchDemo.vue"),
+        component: () => import("../components/Switch/SwitchDemo.vue"),
       },
       {
         path: "button",
-        component: () => import("../components/ButtonDemo.vue"),
+        component: () => import("../components/Button/ButtonDemo.vue"),
       },
       {
         path: "dialog",
-        component: () => import("../components/DialogDemo.vue"),
+        component: () => import("../components/Dialog/DialogDemo.vue"),
       },
-      { path: "tabs", component: () => import("../components/TabDemo.vue") },
+      { path: "tabs", component: () => import("../components/Tabs/TabDemo.vue") },
     ],
   },
 ];
