@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
 // 创建一个vue可以使用的路由实例
 const router = createRouter({
   routes,
-  history: createWebHashHistory(),
+  history: createWebHashHistory('/LU-UI/'),
 });
 
 export default router;
