@@ -5,5 +5,6 @@ import { vitePluginVueReturnSourceCode } from "./src/vitePlugin/vueReturnSourceC
 // https://vitejs.dev/config/
 
 export default defineConfig({
+  base: "/LU-UI/",
   plugins: [vue(), vitePluginMd2Vue(), vitePluginVueReturnSourceCode()],
 });
