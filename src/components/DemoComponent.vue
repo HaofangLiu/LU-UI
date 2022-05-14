@@ -6,7 +6,9 @@
       <component :is="comp"></component>
     </div>
     <div class="demo-actions">
-      <Button @click="checkShowCode">查看代码</Button>
+      <Button @click="checkShowCode">{{
+        checkShowCode ? "隐藏代码" : "查看代码"
+      }}</Button>
     </div>
     <div v-if="checkedBool" class="demo-code">
       <pre v-html="coloredHtml" />
@@ -19,7 +21,6 @@ import { ref, defineComponent, computed } from "vue";
 import Button from "../lib/Button.vue";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
-import { string } from "yargs";
 
 export default defineComponent({
   components: { Button },
