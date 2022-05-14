@@ -1,0 +1,1 @@
+.tabs-nav{display:flex;color:#333;border-bottom:1px solid #d9d9d9;position:relative}.tabs-nav-items{padding:8px 0;margin:0 16px;cursor:pointer}.tabs-nav-items.selected{color:#40a9ff}.tabs-nav:first-child{margin-left:0}.tabs-content{padding:8px 0}.tabs-indeicator{position:absolute;height:3px;background:#40a9ff;width:100px;left:16px;bottom:0;transition:all .25s}
